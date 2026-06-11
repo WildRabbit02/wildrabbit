@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ec_visualizer CyberRT Configuration
+  For cross-host communication with 192.168.1.108 (camera) and 192.168.1.102 (LiDAR)
+  
+  Deploy this file to ALL hosts in the same network with identical RTPS settings.
+-->
+<cyber>
+    <!-- RTPS Transport Configuration for Cross-Host Communication -->
+    <rtps_transport>
+        <enabled>true</enabled>
+        <!-- Multicast IP must be the same on all hosts -->
+        <multicast_ip>239.255.0.1</multicast_ip>
+        <!-- Port must be the same on all hosts -->
+        <port>9090</port>
+        <!-- Optional: TTL for multicast packets -->
+        <ttl>1</ttl>
+    </rtps_transport>
+
+    <!-- Domain ID (optional, default is 0) -->
+    <domain_id>0</domain_id>
+
+    <!-- Process Group Configuration -->
+    <process_group>
+        <sched_name>SCHED_FIFO</sched_name>
+        <priority>80</priority>
+    </process_group>
+
+    <!-- Logging Configuration -->
+    <logging>
+        <level>INFO</level>
+        <log_dir>/tmp/ec_visualizer_logs</log_dir>
+    </logging>
+</cyber>
